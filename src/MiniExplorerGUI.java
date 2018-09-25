@@ -22,16 +22,21 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        lsItems = new javax.swing.JList<>();
+        lsFiles = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lsItems.setModel(new javax.swing.AbstractListModel<String>() {
+        lsFiles.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(lsItems);
+        lsFiles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onChangeDir(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lsFiles);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,6 +57,10 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void onChangeDir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onChangeDir
+        
+    }//GEN-LAST:event_onChangeDir
 
     /**
      * @param args the command line arguments
@@ -90,6 +99,6 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> lsItems;
+    private javax.swing.JList<String> lsFiles;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,14 +8,20 @@ import javax.swing.AbstractListModel;
  */
 public class DateiModel extends AbstractListModel {
 
+    private Datei file;
+    
+    {
+        file = new Datei(".");
+    }
+    
     @Override
     public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return file.listFiles().length;
     }
 
     @Override
     public Object getElementAt(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return file.listFiles()[index]  ;
     }
     
 }
