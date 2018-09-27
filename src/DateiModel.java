@@ -26,12 +26,12 @@ public class DateiModel extends AbstractListModel {
         }
         return file.listFiles()[index-1];
     }
-//   public void changeDir(int i) {
-//        if(i == 0) {
-//            file = file.getParentFile();
-//        } else {
-//            file = file.listFiles()[i-1];
-//        }
-//        fireContentsChanged(this, 0, file.listFiles().length);
-//    }
+   public void changeDir(int i) {
+        if(i == 0) {
+            file = file.getParentFile();
+        } else {
+            file = file.listFiles()[i-1];
+        }
+        fireContentsChanged(this, 0, file.listFiles().length);
+    }
 }
