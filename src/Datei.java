@@ -25,4 +25,24 @@ public class Datei extends File {
                 dtf.format(LocalDateTime.ofEpochSecond(lastModified(), 0, ZoneOffset.UTC)),
                 getTotalSpace());
     }
+    
+    
+    @Override
+    public Datei[] listFiles() {
+        File[] files = super.listFiles();
+        Datei[] dateien = new Datei[files.length];
+        
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i];
+            dateien[i] = new Datei(file.getAbsolutePath()); 
+        }
+        return dateien;
+    }
+
+    @Override
+    public Datei getParentFile() {
+        return new Datei(getParent());
+    }
+    
+    
 }

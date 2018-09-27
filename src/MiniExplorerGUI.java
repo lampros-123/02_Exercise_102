@@ -5,11 +5,11 @@
  */
 public class MiniExplorerGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MiniExplorerGUI
-     */
+    DateiModel model = new DateiModel();
+
     public MiniExplorerGUI() {
         initComponents();
+        lsFiles.setModel(model);
     }
 
     /**
@@ -59,7 +59,8 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void onChangeDir(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onChangeDir
-        
+//        if(evt.getClickCount() > 1)
+//            model.changeDir(lsFiles.getSelectedIndex());
     }//GEN-LAST:event_onChangeDir
 
     /**
