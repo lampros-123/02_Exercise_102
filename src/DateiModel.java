@@ -6,32 +6,25 @@ import javax.swing.AbstractListModel;
  *
  * @author Matthias
  */
-public class DateiModel extends AbstractListModel {
+public class DateiModel extends AbstractListModel<Datei> {
 
     private Datei file;
     
     {
         file = new Datei(".");
     }
-    
+
     @Override
     public int getSize() {
-        return file.listFiles().length + 1;
+        return file.getChildFiles().size();
     }
 
     @Override
-    public Object getElementAt(int index) {
-        if(index == 0) {
-            return "..";
-        }
-        return file.listFiles()[index-1];
+    public Datei getElementAt(int index) {
+        return file.getChildFile(index);
     }
    public void changeDir(int i) {
-        if(i == 0) {
-            file = file.getParentFile();
-        } else {
-            file = file.listFiles()[i-1];
-        }
+        file = file.getChildFile(i);
         fireContentsChanged(this, 0, file.listFiles().length);
     }
 }
