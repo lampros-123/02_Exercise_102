@@ -1,7 +1,6 @@
 
 import javax.swing.AbstractListModel;
 
-
 /**
  *
  * @author Matthias
@@ -9,7 +8,7 @@ import javax.swing.AbstractListModel;
 public class DateiModel extends AbstractListModel<Datei> {
 
     private Datei file;
-    
+
     {
         file = new Datei(".");
     }
@@ -23,7 +22,10 @@ public class DateiModel extends AbstractListModel<Datei> {
     public Datei getElementAt(int index) {
         return file.getChildFile(index);
     }
-   public void changeDir(int i) {
+
+    public void changeDir(int i) {
+        if(!file.getChildFile(i).isDirectory())
+            return;
         file = file.getChildFile(i);
         fireContentsChanged(this, 0, file.listFiles().length);
     }

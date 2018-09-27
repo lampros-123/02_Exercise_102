@@ -25,9 +25,12 @@ public class Datei extends File {
         }
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        return String.format("%-15s %-20s %d KB", getName(),
+        return String.format("%-15s %-20s %d KB %s%s%s", getName(),
                 dtf.format(LocalDateTime.ofEpochSecond(lastModified(), 0, ZoneOffset.UTC)),
-                length() / 1000);
+                length() / 1000,
+                canRead() ? "R":"",
+                canWrite()? "W":"",
+                canExecute()? "X":"");
     }
 
     public void loadChildFiles() {
