@@ -10,6 +10,7 @@ public class MiniExplorerGUI extends javax.swing.JFrame {
     public MiniExplorerGUI() {
         initComponents();
         lsFiles.setModel(model);
+        lsFiles.setCellRenderer(new FileListRenderer());
     }
 
     /**
