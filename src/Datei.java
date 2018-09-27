@@ -37,12 +37,12 @@ public class Datei extends File {
         for (File file : files) {
             dateien.add(new Datei(file.getAbsolutePath()));
         }
+        dateien.sort(new FileComparer());
     }
 
     public ArrayList<Datei> getChildFiles() {
         if (dateien.isEmpty()) {
             loadChildFiles();
-
         }
         return dateien;
     }
